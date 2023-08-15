@@ -19,9 +19,9 @@ export default function Navbar() {
     <>
     
     {/* <Grid.Container gap={16}  className='bg-green-400'> */}
-    <Grid xs={24}><Card width="100%" height="56px">
+    <Grid xs={24}><Card width="100%" height="80px">
       
-      <div className="flex flex-row justify-between align-middle space-x-2 bg-white-400" >
+      <div className="flex flex-row justify-between align-middle space-x-2 mb-2 bg-white-400" >
         <div className="my-auto">
           <Link href="">
             Logo

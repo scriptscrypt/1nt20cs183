@@ -31,7 +31,7 @@ export default function Trains() {
   return (
     <>
     <div className="m-1" >
-    <div onClick={fnGetData}> Refresh</div>
+    {/* <div onClick={fnGetData}> Refresh</div> */}
     {!stTrains && <Loading/>}
 
     <Grid.Container gap={2} justify="center"  height="256px">
@@ -44,7 +44,7 @@ export default function Trains() {
           
           <Grid lg={8} key={key}>
 
-              <Card width="240px" height="240px"  className="m-2 w-8" key={key} onClick={() => {
+              <Card width="240px" height="240px"  className="m-2 w-8 cursor-pointer" key={key} onClick={() => {
  
                 setStOpenModal(true);
                 // setStClickTrainNo(train._id);
@@ -54,46 +54,35 @@ export default function Trains() {
                 setStFilteredTrain(filteredTrain);
               }
                }> 
-              <h3>
+              <h3 className='p-2 text-lg'>
                 {train.trainName}
               </h3> 
-              <h4>
+              <h4 className='px-2 pb-4 font-semibold  '>
                 {train.trainNumber} 
               </h4> 
-              <div className="">
-              Departure:{
-               `${train.departureTime.Hours} : ${train.departureTime.Minutes}}`
-              }
+              <div className="px-2">
+                <div className="">
+                Departure: {`${train.departureTime.Hours} : ${train.departureTime.Minutes}`}
+                
+                </div>
+
+                <div className="text-red-400"> Delay: {train.delayedBy} Minutes </div>
+              </div>
+
+              <hr  className="px-2 mt-4 mb-4  mb-2 " width="200px" />
               
-              </div>
+              <div className="px-2 mb-2"> Seats available </div>
+              <div className="px-2 mt-1 flex flex-row justify-between">
 
-              <div className="">
-                Delayed By: 
-                {train.delayedBy} Minutes
-                {/* {train.delayedBy} */}
-              </div>
+              <div className="text-blue-500"> AC: {train.seatsAvailable.AC}</div>
 
-                <hr width="100px" />
-              Seats available
-              <div className="">
-                AC:
-                {/* {train.price.AC} */}
-                {train.seatsAvailable.AC}
+              <div className="text-blue-500"> Sleeper: {train.seatsAvailable.sleeper}
 
               </div>
-
-              <div className="">
-                sleeper:  
-
-                {/* price: */}
-
-                {/* {train.price.sleeper} */}
-                {train.seatsAvailable.sleeper}
-
               </div>
 
               </Card>
-           </Grid>
+           </Grid> 
           )
         })
       }
@@ -112,13 +101,32 @@ export default function Trains() {
         <Modal.Title>{ stFilteredTrain && stFilteredTrain[0].trainName } </Modal.Title>
         <Modal.Subtitle> { stFilteredTrain && stFilteredTrain[0].trainNumber } </Modal.Subtitle>
         <Modal.Content>
-          <p>Price Details:</p>
-          Sleeper
-          { stFilteredTrain && stFilteredTrain[0].price.sleeper }   
-          <br />
-          AC
-          { stFilteredTrain && stFilteredTrain[0].price.AC }   
+          <p className='m-2'>Price Details:</p>
+          <div className=" flex flex-row justify-around ">
 
+          <div className="rounded-md p-2 flex flex-row align-middle justify-center border border-slate-200 cursor-pointer w-32 hover:border-blue-500">
+              <div className="">
+                Sleeper
+              </div>
+              <div className="mx-1">
+              ₹ { stFilteredTrain && stFilteredTrain[0].price.sleeper }   
+              </div>
+          </div>
+
+
+          <div className="rounded-md p-2 flex flex-row align-middle justify-center border border-slate-200 cursor-pointer w-32 hover:border-blue-500"> 
+              <div className="">
+                AC
+              </div>
+              <div className="mx-1">
+              ₹ { stFilteredTrain && stFilteredTrain[0].price.AC }   
+              </div>
+          </div>
+
+
+
+
+          </div>
         </Modal.Content>
         {/* <Modal.Action passive onClick={() => setStOpenModal(false)}>Cancel</Modal.Action>
         */}

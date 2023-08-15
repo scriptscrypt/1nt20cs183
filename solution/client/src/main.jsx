@@ -8,7 +8,7 @@ import {
   Outlet,
   RouterProvider,
 } from "react-router-dom";
-
+import "./index.css" 
 
 const router = createBrowserRouter([
   {
