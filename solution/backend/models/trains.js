@@ -19,6 +19,5 @@ const trainSchema = new mongoose.Schema({
   delayedBy: { type: Number, default: 0 },
 });
 
-const Train = mongoose.model('Train', trainSchema);
-
+const Train = mongoose.model('collTrainDetails', trainSchema);
 module.exports = Train;

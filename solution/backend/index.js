@@ -6,6 +6,7 @@ const connectDB = require("./config/dbconfig");
 const bodyParser = require('body-parser');
 const cors = require('cors'); 
 const authRoutes = require("./routes/authRoutes")
+const trainRoutes = require("./routes/trainRoutes")
 
 // Connect to the MongoDB database
 connectDB();
@@ -30,6 +31,7 @@ app.use(passport.initialize());
 // Include the user routes
 // app.use('/train', trainRoutes);
 app.use('/train', authRoutes);
+app.use('/train', trainRoutes);
 
 
 app.listen(PORT, () => {
